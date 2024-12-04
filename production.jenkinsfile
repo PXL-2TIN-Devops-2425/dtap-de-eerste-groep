@@ -1,9 +1,31 @@
 pipeline {
     agent any
+    environment {
+        ipaddressaws = '35.173.249.7'
+    }
     stages {
-        stage('dtap production') {
+        stage('deploy production') {
             steps {
-                echo "good luck..."
+                sshagent(['DTAP-server']) {
+                    script {
+                        docker.image('chakkebeest/calculator-app:latest').pull()
+                    }
+                }
+            }
+        }
+        stage('start production') {
+            steps {
+                sshagent(['DTAP-server']) {
+                    sh 'ssh-add -D'
+                    sh 'ssh-add /var/lib/jenkins/.ssh/DTAP2-key.pem'
+                    sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/DTAP2-key.pem ubuntu@${ipaddressaws} "docker rm -f my-calculator-app"'
+                    sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/DTAP2-key.pem ubuntu@${ipaddressaws} "docker run --name=my-calculator-app -d -p 80:3000 chakkebeest/calculator-app:latest"'
+                }
+            }
+        }
+        stage('test production') {
+            steps {
+                sh "curl -I http://${ipaddressaws}/"
             }
         }
     }
