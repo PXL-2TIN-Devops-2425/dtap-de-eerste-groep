@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        ipaddressaws = '35.173.249.7'
+        IP_AWS = '35.173.249.7'
     }
     stages {
-        stage('deploy production') {
+        stage('deploy prod') {
             steps {
                 sshagent(['DTAP-server']) {
                     script {
@@ -13,19 +13,19 @@ pipeline {
                 }
             }
         }
-        stage('start production') {
+        stage('start prod') {
             steps {
                 sshagent(['DTAP-server']) {
                     sh 'ssh-add -D'
                     sh 'ssh-add /var/lib/jenkins/.ssh/DTAP2-key.pem'
-                    sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/DTAP2-key.pem ubuntu@${ipaddressaws} "docker rm -f my-calculator-app"'
-                    sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/DTAP2-key.pem ubuntu@${ipaddressaws} "docker run --name=my-calculator-app -d -p 80:3000 chakkebeest/calculator-app:latest"'
+                    sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/DTAP2-key.pem ubuntu@${IP_AWS} "docker rm -f my-calculator-app"'
+                    sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/DTAP2-key.pem ubuntu@${IP_AWS} "docker run --name=my-calculator-app -d -p 80:3000 chakkebeest/calculator-app:latest"'
                 }
             }
         }
-        stage('test production') {
+        stage('test prod') {
             steps {
-                sh "curl -I http://${ipaddressaws}/"
+                sh "curl -I http://${IP_AWS}/"
             }
         }
     }
