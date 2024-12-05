@@ -9,12 +9,12 @@ De 2de afbeelding is de globale toolconfiguratie van nodeJS
 # Productie Jenkinsfile
 -----------------------
 b)
-![alt text](.dev1.png)
-![alt text](.dev2.png)
-![alt text](.dev3.png)
-![alt text](.dev4.png)
-![alt text](.devCalculator5.png)
-![alt text](.devopsCredentials.png)
+![alt text](.github/dev1.png)
+![alt text](.github/dev2.png)
+![alt text](.github/dev3.png)
+![alt text](.github/dev4.png)
+![alt text](.github/devCalculator5.png)
+![alt text](.github/devopsCredentials.png)
 
 
 
