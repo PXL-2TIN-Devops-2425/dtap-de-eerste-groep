@@ -6,4 +6,17 @@ a)voor jenkins rechten te geven moest ik het chmod commando gebruiken die te zie
 ![alt text](.github/nodeTool.png)
 De 2de afbeelding is de globale toolconfiguratie van nodeJS
 
+# Productie Jenkinsfile
+-----------------------
 b)
+![alt text](.dev1.png)
+![alt text](.dev2.png)
+![alt text](.dev3.png)
+![alt text](.dev4.png)
+![alt text](.devCalculator5.png)
+![alt text](.devopsCredentials.png)
+
+
+
+
+
