@@ -3,16 +3,16 @@ opmaak met Markdown.
 
 # Test.jenkinsfile
 -----------------
-
 a)Voor jenkins rechten te geven moest ik het chmod commando gebruiken die te zien is in volgende afbeelding.
 ![alt text](.github/jenkinsDockerrechten.png)
 
 De 2de afbeelding is de globale toolconfiguratie van nodeJS.
 ![alt text](.github/nodeTool.png)
 
+
+
 # Production.jenkinsfile
 -----------------------
-
 ![alt text](.github/dev1.png)
 ![alt text](.github/dev2.png)
 ![alt text](.github/dev3.png)
